@@ -1,0 +1,59 @@
+.topnav {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    background: white;
+}
+
+.logo {
+    height: inherit;
+    width: 280px;
+    /* background: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    height: inherit;
+    width: auto;
+    border-radius: 50px;
+    padding-right: 5px;
+}
+
+h2 {
+    color: rgba(14, 90, 14, 0.791);
+}
+
+.searchcenter {
+    height: inherit;
+    width: 450px;
+    /* background-color: blueviolet; */
+    margin-right: 50px;
+}
+
+.location {
+    height: inherit;
+    width: 280px;
+    /* background: palegreen; */
+}
+
+.differentcat {
+    height: inherit;
+    width: 420px;
+    /* background-color: peru; */
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.differentcat span {
+    font-weight: 500;
+}
+
+.contnum {
+    margin-left: 100px;
+}
+
+.main_img{
+    padding: 0 56px 0 56px;
+}
