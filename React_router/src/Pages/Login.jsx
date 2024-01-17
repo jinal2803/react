@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios';
 
 import { toast } from 'react-toastify'
 
 function Login() {
-    
-    
+
   const redirect = useNavigate();
 
   const [formvalue, setFormvalue] = useState({
@@ -33,7 +32,7 @@ function Login() {
           localStorage.setItem('user_name', res.data[0].name);
           toast.success('Login Success !')
           setFormvalue({ ...formvalue, email: "", pwd: "" });
-          return redirect('/dashboard');
+          return redirect('/');
         }
         else {
           toast.error('Your Account Blocked so contact customer care!');
@@ -41,7 +40,7 @@ function Login() {
         }
       }
       else {
-        toast.exrror('Wrong Password !');
+        toast.error('Wrong Password !');
         setFormvalue({ ...formvalue, email: "", pwd: "" });
       }
     }
@@ -55,7 +54,9 @@ function Login() {
 
   const validation = () => {
     let result = true;
-    if(formvalue.email == "" || formvalue.email == null){
+
+    if(formvalue.email == "" || formvalue.email == null)
+    {
       toast.error('E-mail required');
       result = false;
     }
@@ -66,39 +67,27 @@ function Login() {
     return result 
   }
 
-    return (
-        <div>
-            <div className="container">
-                <div className="row text-center " style={{ paddingTop: 100 }}>
-                    <div className="col-md-12">
-                        <img src="assets/img/logo-invoice.png" />
-                    </div>
-                </div>
-                <div className="row ">
-                    <div className="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
-                        <div className="panel-body">
-                            <form action='' method='post' role="form">
-                                <hr />
-                                <h5>Enter Details to Login</h5>
-                                <br />
-                                <div className="form-group input-group">
-                                    <span className="input-group-addon"><i className="fa fa-tag" /></span>
-                                    <input type="email" value={formvalue.email} onChange={changehandel} className="form-control" id="email" placeholder="Enter email" name="email" />
-                                </div>
-                                <div className="form-group input-group">
-                                    <span className="input-group-addon"><i className="fa fa-lock" /></span>
-                                    <input type="Password" value={formvalue.pwd} onChange={changehandel} className="form-control" id="pwd" placeholder="Enter Password" name="pwd" />
-                                </div>
-                                
-                                <button className='btn btn-primary' onClick={submithandel}>Login Now</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-        </div>
-    )
+  return (
+    <div>
+      <div className='container m-5'>
+        <h1>Login</h1>
+        <form action="" method='post'>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">Email:</label>
+            <input type="email" value={formvalue.email} onChange={changehandel} className="form-control" id="email" placeholder="Enter email" name="email" />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="pwd" className="form-label">Password:</label>
+            <input type="Password" value={formvalue.pwd} onChange={changehandel} className="form-control" id="pwd" placeholder="Enter Password" name="pwd" />
+          </div>
+          <button type="submit" onClick={submithandel} className="btn btn-primary">Submit</button>
+          <Link to="/Signup" cla className='float-right'> If you not registered then signup here</Link >
+        </form>
+
+      </div>
+    </div>
+  )
 }
 
 export default Login
